@@ -22,7 +22,7 @@ int get_argument(char *line, int *num)
  */
 void handle_error(char *message, unsigned int line_number)
 {
-	fprintf(stderr, message, line_number);
+	fprintf(stderr, "L%u: %s\n", line_number, message);
 	exit(EXIT_FAILURE);
 }
 

@@ -11,7 +11,6 @@
 int execute_line(char *line, stack_t **stack, unsigned int line_number)
 {
 	instruction_t instructions[] = {
-		{"push", NULL},
 		{"pall", pall},
 		{NULL, NULL}
 	};
@@ -26,7 +25,10 @@ int execute_line(char *line, stack_t **stack, unsigned int line_number)
 	if (strcmp(opcode, "push") == 0)
 	{
 		if (get_argument(strtok(NULL, " \t\n"), &argument) == -1)
-			handle_error("L%u: usage: push integer\n", line_number);
+		{
+			fprintf(stderr, "L%u: usage: push integer\n", line_number);
+			return (-1);
+		}
 		push(stack, line_number, argument);
 		return (0);
 	}
@@ -40,6 +42,6 @@ int execute_line(char *line, stack_t **stack, unsigned int line_number)
 		}
 	}
 
-	 fprintf(stderr, "L%u: unknown instruction %s\n", line_number, opcode);
+	fprintf(stderr, "L%u: unknown instruction %s\n", line_number, opcode);
 	return (-1);
 }

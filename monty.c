@@ -11,9 +11,7 @@
 int main(int argc, char *argv[])
 {
 	FILE *file;
-	char *line = NULL;
-	size_t len = 0;
-	ssize_t read = 1;
+	char line[1024];
 	unsigned int line_number = 0;
 	stack_t *stack = NULL;
 
@@ -30,19 +28,13 @@ int main(int argc, char *argv[])
 		return (EXIT_FAILURE);
 	}
 
-	while (read > 0)
+	while (fgets(line, sizeof(line), file) != NULL)
 	{
-		read = getline(&line, &len, file);
 		line_number++;
-		if (read > 0)
-		{
-			execute_line(line, &stack, line_number);
-		}
-		free(line)
+		execute_line(line, &stack, line_number);
 	}
 
 	free_stack(stack);
 	fclose(file);
 	return (0);
 }
-
