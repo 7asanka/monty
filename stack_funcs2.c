@@ -12,7 +12,7 @@ void swap(stack_t **stack, unsigned int line_number)
 
 	if (stack == NULL || *stack == NULL)
 	{
-		handle_error("can't swap, stack too short\n", line_number);
+		handle_error("can't swap, stack too short", line_number);
 		exit(EXIT_FAILURE);
 	}
 
@@ -26,7 +26,7 @@ void swap(stack_t **stack, unsigned int line_number)
 
 	if (i < 2)
 	{
-		handle_error("can't swap, stack too short\n", line_number);
+		handle_error("can't swap, stack too short", line_number);
 		exit(EXIT_FAILURE);
 	}
 
