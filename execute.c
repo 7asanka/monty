@@ -12,6 +12,7 @@ int execute_line(char *line, stack_t **stack, unsigned int line_number)
 {
 	instruction_t instructions[] = {
 		{"pall", pall},
+		{"pint", pint},
 		{NULL, NULL}
 	};
 	char *opcode;

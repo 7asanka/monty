@@ -45,6 +45,18 @@ void pall(stack_t **stack, unsigned int line_number)
 }
 
 /**
+ * pint - prints the value at the top of the stack
+ * @stack: the stack
+ * @line_number: the line number of the instruction
+ */
+void pint(stack_t **stack, unsigned int line_number)
+{
+	(void) line_number;
+
+	if (*stack != NULL)
+		printf("%d\n", (*stack)->n);
+}
+/**
  * free_stack - Frees the stack
  * @stack: The stack to free
  */
